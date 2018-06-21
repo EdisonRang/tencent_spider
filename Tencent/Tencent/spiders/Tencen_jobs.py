@@ -16,8 +16,8 @@ class TencenJobsSpider(scrapy.Spider):
         # 遍历列表抽取数据
         for node in node_list:
             item = TencentItem()
-            item['name'] = node.xpath('./td[1]/text()').extract_first()
-            item['link'] = "https://hr.tencent.com/" + node.xpath('./td[1]/@href').extract_first()
+            item['name'] = node.xpath('./td[1]/a/text()').extract_first()
+            item['link'] = "https://hr.tencent.com/" + node.xpath('./td[1]/a/@href').extract_first()
             item['category'] = node.xpath('./td[2]/text()').extract_first()
             item['num'] = node.xpath('./td[3]/text()').extract_first()
             item['address'] = node.xpath('./td[4]/text()').extract_first()
